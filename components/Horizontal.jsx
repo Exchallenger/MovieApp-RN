@@ -1,14 +1,15 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled from 'styled-components/native';
 
 const Container = styled.View``;
 const Text= styled.Text`
     color:white;
 `;
 const Horizontal = () => {
+
     return (
         <Container>
-            <Text>Hi</Text>
+            <Text></Text>
         </Container>
     );
 };

@@ -1,5 +1,6 @@
-import React from 'react';
-import styled from 'styled-components';
+import React, { useState } from 'react';
+import styled from 'styled-components/native';
+import { mymovie } from '../../myapi';
 import MoviePresenter from './MoviePresenter';
 
 const Container = styled.View`
