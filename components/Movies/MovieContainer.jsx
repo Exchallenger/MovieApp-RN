@@ -4,6 +4,7 @@ import { mymovie } from '../../myapi';
 import MoviePresenter from './MoviePresenter';
 
 const Container = styled.View`
+flex:1;
 background-color:black;
 height:100%;
 `

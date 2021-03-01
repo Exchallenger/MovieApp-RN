@@ -1,10 +1,16 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import styled from 'styled-components/native';
+import Test from '../Test';
+
+const View = styled.View`
+flex:1;
+`;
 
 const Favs = () => {
     return (
         <View>
-            <Text>Favs</Text>
+
+            <Test/>
         </View>
     );
 };

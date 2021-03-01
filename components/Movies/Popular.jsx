@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
+import { TouchableOpacity } from 'react-native';
 import styled from 'styled-components/native';
 import { apiImage } from '../../api';
-import { Image } from '../../common';
+import { Image, Votes } from '../../common';
 import { mymovie } from '../../myapi';
 import { trimText } from '../../tool';
 import Title from '../Title';
@@ -25,7 +26,6 @@ const Text = styled.Text`
 `;
 
 
-
 const Popular = (props) => {
     const [pop, setPop] = useState([]);
     const setData = async() =>{
@@ -42,11 +42,13 @@ const Popular = (props) => {
             <ScrollView horizontal={true}>
             <MainContainer>
             {pop.map(result => 
-              <Container key={result.id} id={result.id}>
+            <TouchableOpacity key={result.id} id={result.id}>
+            <Container>
             <Image url={apiImage(result.poster_path)} />
             <Text>{trimText(result.title, 13)}</Text>
-            <Text>🌟 {result.vote_average}</Text>
+            <Votes average={result.vote_average}/>
             </Container>
+            </TouchableOpacity>
             )}
             </MainContainer>
             </ScrollView>
