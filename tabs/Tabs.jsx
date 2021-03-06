@@ -1,13 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import Tv from '../components/Tv';
+import Tv from '../components/Tv/TvContainer';
 import Favs from '../components/Favs';
 import Movies from '../components/Movies/MovieContainer';
 import Search from '../components/Search';
 import { Ionicons } from '@expo/vector-icons';
 
-const Tab = createBottomTabNavigator()
+const Tab = createBottomTabNavigator();
 
 const Tabs = ({navigation, route}) => {
     return(

@@ -8,10 +8,9 @@ flex:1;
 
 const Favs = () => {
     return (
-        <View>
-
+        // <View>
             <Test/>
-        </View>
+        /* </View> */
     );
 };
 

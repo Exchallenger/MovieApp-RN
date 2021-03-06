@@ -1,11 +1,14 @@
 import React from 'react';
-import { Text } from 'react-native';
+import { ScrollView } from 'react-native';
+// import { Text } from 'react-native';
 import Swiper from 'react-native-web-swiper';
 import styled from 'styled-components/native';
 
 const View = styled.View`
 flex:1;
 `;
+
+const Text = styled.Text``;
 
 const View1 = styled.View`
     background-color:blue;
@@ -28,8 +31,9 @@ const View3 = styled.View`
 
 const Test = () => {
     return (
-        <View>
+        // <View>
         <Swiper>
+            {/* <ScrollView> */}
             <View1>
                 <Text>
                     Hi1
@@ -45,8 +49,9 @@ const Test = () => {
                     Hi3
                 </Text>
             </View3>
+            {/* </ScrollView> */}
         </Swiper>
-        </View>
+        // </View>
     );
 };
 

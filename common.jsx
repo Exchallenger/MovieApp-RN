@@ -1,5 +1,4 @@
 import React from 'react';
-import { Dimensions, TouchableOpacity } from 'react-native';
 import styled from 'styled-components/native';
 import { trimText } from './tool';
 
@@ -7,19 +6,10 @@ import { trimText } from './tool';
 
 
 const Images = styled.Image`
-    width:80px;
-    height:130px;
-    margin: 0px 7px 12px 7px;
+    width:110px;
+    height:160px;
+    margin: 0px 16px 12px 7px;
     border-radius:5px;
-`;
-
-const HContainer = styled.View`
-    flex-direction:row;
-    margin: 7px 8px 7px 8px;
-`;
-
-const ScrollView = styled.ScrollView`
-    flex-direction:row;
 `;
 
 const Text = styled.Text`
@@ -32,7 +22,7 @@ const BG = styled.Image`
     position:absolute;
     width: 100%;
     height: 100%;
-    opacity:0.5;
+    opacity:0.4;
 `;
 
 const OvText = styled.Text`
@@ -40,27 +30,18 @@ const OvText = styled.Text`
     text-align:center;
 `
 
+
 export const Image = ({url}) => {
     return (
         <Images source={{uri:url}}/>
     );
 };
 
-export const Horizontal = () => {
-    return(
-        <ScrollView horizontal={true}>
-            <TouchableOpacity>
-            <HContainer>
-            </HContainer>
-            </TouchableOpacity>
-        </ScrollView>
-    )
-}
 
 export const Votes = ({average}) =>{
     return(
     <Text>
-        🌟 {average}
+        {average === 0 ? "Not yet" : `🌟 ${average}`}
     </Text>
     )
 }
@@ -71,10 +52,10 @@ export const BgImage = ({url}) =>{
     );
 }
 
-export const OverView = ({overview}) =>{
+export const OverView = ({overview,len}) =>{
     return(
         <OvText>
-            {trimText(overview,200)}
+            {trimText(overview,len)}
         </OvText>
     );
 }
