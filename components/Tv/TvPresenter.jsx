@@ -30,6 +30,7 @@ const TvPresenter = () => {
             topRate,
             popular,
         })
+        console.log(Datas);
     }
 
     const View = styled.View``;

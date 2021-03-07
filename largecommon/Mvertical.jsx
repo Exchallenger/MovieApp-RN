@@ -35,17 +35,13 @@ flex-direction:row;
 width:60%;
 margin:0px 0px 12px 8px;
 `;
-const TouchableOpacity = styled.TouchableOpacity`
-flex-direction:row;
-width:95%;
-`;
+
 
 const Vertical = ({data}) => {
     return (
         <Container>
             {data.map(result => 
                     <View id={result.id} key={result.id}>
-                        <TouchableOpacity>
                         <Image url={apiImage(result.backdrop_path)}/>
                         <TextContainer>
                             {result.release_date && <DateContainer>
@@ -54,7 +50,6 @@ const Vertical = ({data}) => {
                             <Text>{trimText(result.title ? result.title: result.name,25)}</Text>
                             <OverView overview={result.overview} len={150}/>
                         </TextContainer>
-                        </TouchableOpacity>
                     </View>
                 )}
         </Container>

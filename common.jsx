@@ -1,4 +1,5 @@
 import React from 'react';
+import { Dimensions } from 'react-native';
 import styled from 'styled-components/native';
 import { trimText } from './tool';
 
@@ -30,12 +31,23 @@ const OvText = styled.Text`
     text-align:center;
 `
 
+const Simages = styled.Image`
+    width:${Dimensions.get('window').width/4.2};
+    height:150px;
+    margin: 6px 2px 6px 2px;
+`;
 
 export const Image = ({url}) => {
     return (
         <Images source={{uri:url}}/>
     );
 };
+
+export const Simage = ({url}) =>{
+    return(
+        <Simages source={{uri:url}}/>
+    )
+}
 
 
 export const Votes = ({average}) =>{

@@ -4,7 +4,7 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Tv from '../components/Tv/TvContainer';
 import Favs from '../components/Favs';
 import Movies from '../components/Movies/MovieContainer';
-import Search from '../components/Search';
+import Search from '../components/Search/SearchContainer';
 import { Ionicons } from '@expo/vector-icons';
 
 const Tab = createBottomTabNavigator();

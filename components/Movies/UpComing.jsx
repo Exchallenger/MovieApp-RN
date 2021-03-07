@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { ScrollView } from 'react-native';
 import styled from 'styled-components/native';
-import Vertical from '../../largecommon/Vertical';
+import MVertical from '../../largecommon/Mvertical';
 import { mymovie } from '../../myapi';
 import Title from '../Title';
 
@@ -25,7 +25,7 @@ const UpComing = () => {
     return (
         <Container>
             <Title title='Up Coming'/>
-            <Vertical data={up}/>
+            <MVertical data={up}/>
         </Container>
     );
 };
