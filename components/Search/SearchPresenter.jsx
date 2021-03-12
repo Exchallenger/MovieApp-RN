@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {  ActivityIndicator, TextInput } from 'react-native';
 import { onChange } from 'react-native-reanimated';
 import styled from 'styled-components/native';
@@ -12,6 +12,7 @@ const Container = styled.View`
 
 const SearchPresenter = () => {
     const [keyword, setKeyword] = useState();
+    const [state, setState] = useState('Result of');
     const [datas, setData] = useState({
         loading:true,
         data:[],
@@ -21,10 +22,15 @@ const SearchPresenter = () => {
 
     const onChange = (text) => {
         setKeyword(text);
+        if(text.length <= 2){
+            setState('Searching for');
+        }
     };
 
     const onSubmit = () =>{
         getData(keyword);
+        setState('Result of');
+        
     }
 
     const getData = async(key) =>{
@@ -58,7 +64,8 @@ const SearchPresenter = () => {
         : <SearchData 
         keyword={keyword} 
         data={datas.data} 
-        datat={datas.datat}/>}
+        datat={datas.datat}
+        state={state}/>}
         </Container>
     );
 };

@@ -37,6 +37,13 @@ const Simages = styled.Image`
     margin: 6px 2px 6px 2px;
 `;
 
+const Simimages = styled.Image`
+    width:${Dimensions.get('window').width/4.2};
+    opacity:0.4;
+    height:150px;
+    margin: 6px 2px 6px 2px;
+`;
+
 export const Image = ({url}) => {
     return (
         <Images source={{uri:url}}/>
@@ -47,6 +54,11 @@ export const Simage = ({url}) =>{
     return(
         <Simages source={{uri:url}}/>
     )
+}
+export const Simimage = ({url}) =>{
+    return(
+    <Simimages source={{uri:url}}/>
+    );
 }
 
 
@@ -71,3 +83,5 @@ export const OverView = ({overview,len}) =>{
         </OvText>
     );
 }
+
+export const NoImage = 'https://unsplash.com/photos/0W4XLGITrHg';

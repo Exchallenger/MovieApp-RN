@@ -1,3 +1,4 @@
+import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { Dimensions} from 'react-native';
 import styled from 'styled-components/native';
@@ -47,7 +48,18 @@ const BText = styled.Text`
     font-size:14px;
 `
 
-const Silder = ({result,name,titles}) => {
+const Silder = ({id,overview,result,name,titles,url,vote}) => {
+    const navigation = useNavigation();
+    const goToDetail = () => navigation.navigate("Details",
+    {
+        title:titles,
+        name,
+        url,
+        overview,
+        id,
+        vote,
+        bg:apiImage(result.backdrop_path)
+    });
     return (
             <View>
                 <BgImage url={apiImage(result.backdrop_path)}/>
@@ -59,7 +71,7 @@ const Silder = ({result,name,titles}) => {
                     </FlexContainer>
                     <Container>
                     <OverView overview={result.overview} len={280}/>
-                    <Btn>
+                    <Btn onPress={goToDetail}>
                         <BText>Show Detail</BText>
                     </Btn>
                     </Container>

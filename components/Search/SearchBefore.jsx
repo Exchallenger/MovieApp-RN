@@ -1,8 +1,8 @@
+import { useNavigation } from '@react-navigation/native';
 import React, { useEffect, useState } from 'react';
-import { Dimensions, TouchableOpacity } from 'react-native';
 import styled from 'styled-components/native';
-import { Simage } from '../../common';
 import { apiImage, mymovie, myTv } from '../../myapi';
+import Mvdata from './Mvdata';
 
 const Container = styled.View`
 padding: 12px 0 0 0;
@@ -12,10 +12,6 @@ const FlexContainer = styled.View`
 flex-direction:row;
 width:100%;
 flex-wrap:wrap;
-`;
-
-const ImgContainer = styled.View`
-    flex-direction:row;
 `;
 
 const Text = styled.Text`
@@ -31,6 +27,7 @@ const SearchBefore = () => {
         tv:[]
     })
     
+
     const getData = async() =>{
         const movie = await mymovie.nowPlaying();
         const tv = await myTv.today();
@@ -42,25 +39,30 @@ const SearchBefore = () => {
 
     useEffect(() =>{
         getData();
-    })
+    },[]);
+
 
     return (
         <Container>
             <Text>Recommand for you</Text>
             <FlexContainer>
             {data.movie.map(result => 
-                <ImgContainer key={result.id} id={result.id}>
-                <TouchableOpacity>
-                    <Simage url={apiImage(result.poster_path)}/>
-                </TouchableOpacity>
-                </ImgContainer>
+                <Mvdata 
+                key={result.id}
+                id={result.id}
+                url={apiImage(result.poster_path)}
+                title={result.title}
+                result={result}
+                />
                 )}
             {data.tv.map(result => 
-                <ImgContainer key={result.id} id={result.id}>
-                <TouchableOpacity>
-                    <Simage url={apiImage(result.poster_path)}/>
-                </TouchableOpacity>
-                </ImgContainer>
+                <Mvdata 
+                key={result.id}
+                id={result.id}
+                url={apiImage(result.poster_path)}
+                title={result.name}
+                result={result}
+                />
                 )}
                 </FlexContainer>
 

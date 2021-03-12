@@ -6,7 +6,6 @@ import { Image, Votes } from '../common';
 import Title from '../components/Title';
 import { apiImage } from '../myapi';
 import { trimText } from '../tool';
-import Hordata2 from './Hordata2';
 
 
 
@@ -25,33 +24,30 @@ const ScrollView = styled.ScrollView`
 const Text = styled.Text`
     color:white;
     text-align:center;
-`;
+`
 
-
-const Horizontal2 = ({data,titles}) => {
+const Hordata2 = ({id,overview,result,name,titles,url,vote}) => {
     const navigation = useNavigation();
-    const goToDetail = () => navigation.navigate("Details");
+    const goToDetail = () => navigation.navigate("Details",
+    {
+        title:titles,
+        name,
+        url,
+        overview,
+        id,
+        vote,
+        bg:apiImage(result.backdrop_path) 
+    }
+    );
     return (
+        <TouchableOpacity key={id} id={id} onPress={goToDetail}>
         <Container>
-            <Title title={titles}/>
-            <ScrollView horizontal={true}>
-            <MainContainer>
-            {data.map(result => 
-            <Hordata2
-            name={result.name} 
-            titles={result.title}
-            result={result} 
-            id={result.id}
-            url={apiImage(result.poster_path)}
-            key={result.id}
-            overview={result.overview}
-            vote={result.vote_average}
-            />
-            )}
-            </MainContainer>
-            </ScrollView>
+        <Image url={url} />
+        <Text>{trimText(titles || name, 13)}</Text>
+        <Votes average={vote}/>
         </Container>
+        </TouchableOpacity>
     );
 };
 
-export default Horizontal2;
+export default Hordata2;

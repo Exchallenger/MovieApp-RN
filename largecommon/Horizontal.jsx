@@ -8,9 +8,7 @@ import Silder from '../Silder';
 
 const MainContainer = styled.View`
     flex:1;
-    /* flex-direction:row; */
-    /* margin: 7px 8px 7px 8px; */
-`;
+    `;
 
 
 
@@ -28,7 +26,12 @@ const Horizontal = ({now,title}) => {
             name={result.name} 
             titles={result.title}
             result={result} 
-            d={result.id} key={result.id}/>
+            id={result.id}
+            url={result.poster_path}
+            key={result.id}
+            overview={result.overview}
+            vote={result.vote_average}
+            />
             )}
         </Swiper>
         </MainContainer>

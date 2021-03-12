@@ -1,0 +1,23 @@
+{key,id,url,title,name,result}
+
+
+,
+,
+    {
+        title:titles,
+        name,
+        url,
+        overview,
+        id,
+        vote,
+        bg:result.backdrop_path
+    }
+
+     name={result.name} 
+            titles={result.title}
+            result={result} 
+            id={result.id}
+            url={result.poster_path}
+            key={result.id}
+            overview={result.overview}
+            vote={result.vote_average}

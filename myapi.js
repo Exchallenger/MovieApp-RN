@@ -9,18 +9,6 @@ const getData = async(path,kind,query='') => {
 
 //api.themoviedb.org/3/search/movie?api_key=1231231&query=kimchi/
 
-    //backdrop_path title
-    //poster_path vote_average
-    //overview id
-    //adult
-    //
-    //
-
-    // backdrop_path overview name(title) 
-    // poster_path
-
-
-
 export const mymovie = {
     nowPlaying: () => getData('movie','now_playing'),
     popular: () => getData('movie','popular'),
@@ -39,5 +27,13 @@ export const myTv = {
 };
 
 
+export const similar = async(kind,id) => {
+    const TMDB_KEY = '4f98d431d636a7962fcef6b6f5a35256';
+    const datas = await axios.get(`https://api.themoviedb.org/3/${kind}/${id}/similar?api_key=${TMDB_KEY}&language=en-US&page=1`);
+    return datas.data.results;
+}
 
-export const apiImage = (path) => `https://image.tmdb.org/t/p/w500${path}`;
+
+
+export const apiImage = (path) => path === null ? 'https://images.unsplash.com/photo-1610337673044-720471f83677?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=2766&q=80':`https://image.tmdb.org/t/p/w500${path}`;
+
