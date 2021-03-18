@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components/native';
+import { Favicons } from '../../common';
 import { mymovie } from '../../myapi';
 import MoviePresenter from './MoviePresenter';
 
@@ -12,6 +13,7 @@ height:100%;
 const MovieContainer = () => {
     return (
         <Container>
+            {/* <Favicons/> */}
             <MoviePresenter/>          
         </Container>
     );

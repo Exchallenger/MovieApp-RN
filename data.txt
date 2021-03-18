@@ -21,3 +21,86 @@
             key={result.id}
             overview={result.overview}
             vote={result.vote_average}
+
+
+
+            import React, { useEffect, useRef, useState } from 'react';
+import {Animated, PanResponder, StyleSheet} from 'react-native';
+import styled from 'styled-components/native';
+import { Simage} from '../common';
+import { apiImage, myTv } from '../myapi';
+import Test from '../Test';
+
+const View = styled.View`
+ flex-direction:row;
+ flex-wrap:wrap;
+`;
+
+const Container = styled.View`
+background-color:black;
+`;
+
+const ScrollView = styled.ScrollView`
+    background-color:black;
+    
+`;
+
+const styles = StyleSheet.create({
+    ani:{
+        flexDirection:'row',
+        flexWrap:'wrap'
+    }
+})
+
+const Favs = () => {
+    const [datas,setData] = useState([]);
+
+    const getData = async() =>{
+        const data = await myTv.popular();
+        data && setData(data);
+    };
+    useEffect(() =>{
+        getData()
+    },[]);
+
+    const pan = useRef(new Animated.ValueXY()).current;
+
+    const panResponder = useRef(
+        PanResponder.create({
+            onMoveShouldSetPanResponder: () => true,
+            onPanResponderGrant: () => {
+                pan.setOffset({
+                    x: pan.x._value,
+                    y: pan.y._value
+                })
+            },
+            onPanResponderRelease:()=>{
+     pan.flattenOffset();
+ }})
+    ).current;
+
+    return (
+        <ScrollView>
+            <View>
+        <Animated.View
+        style={{
+            transform:[{translateX: pan.x}, {translateY:pan.y}],
+            ...styles
+            
+        }}
+        {...panResponder.panHandlers}
+        >
+            {datas.map(result => 
+                <Container key={result.id} id={result.id}>
+                    <Simage url={apiImage(result.poster_path)}/>
+                </Container>)}
+         </Animated.View>
+         </View>
+         </ScrollView>
+    );
+};
+
+
+
+
+export default Favs;

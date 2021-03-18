@@ -1,8 +1,7 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Tv from '../components/Tv/TvContainer';
-import Favs from '../components/Favs';
 import Movies from '../components/Movies/MovieContainer';
 import Search from '../components/Search/SearchContainer';
 import { Ionicons } from '@expo/vector-icons';
@@ -25,8 +24,6 @@ const Tabs = ({navigation, route}) => {
                     iconName = 'ios-film'
                 } else if(route.name ==="Tv"){
                     iconName = 'ios-tv'
-                }else if(route.name === "Favs"){
-                    iconName = 'ios-heart'
                 }else if(route.name === "Search"){
                     iconName = 'ios-search'
                 }
@@ -37,7 +34,6 @@ const Tabs = ({navigation, route}) => {
             <Tab.Screen name="Movies" component={Movies}/>
             <Tab.Screen name="Tv" component={Tv}/>
             <Tab.Screen name="Search" component={Search}/>
-            <Tab.Screen name="Favs" component={Favs}/>
         </Tab.Navigator>   
     );
 }

@@ -11,7 +11,7 @@ const TitleText = styled.Text`
 
 const RContainer = styled.View``;
 
-const SearchDatacon = ({key,id,url,title,name,result,overview}) => {
+const SearchDatacon = ({poster,id,url,title,name,result,overview}) => {
     const navigation = useNavigation();
     const goToDetail = () => navigation.navigate("Details",
     {
@@ -21,7 +21,8 @@ const SearchDatacon = ({key,id,url,title,name,result,overview}) => {
         overview,
         id,
         vote:result.vote_average,
-        bg:result.backdrop_path
+        bg:result.backdrop_path,
+        poster
     });
     return (
         <RContainer key={id} id={id}>

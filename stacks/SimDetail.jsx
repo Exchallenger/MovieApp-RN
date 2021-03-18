@@ -1,4 +1,5 @@
 import { Ionicons } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/core';
 import React, { useState } from 'react';
 import { Dimensions } from 'react-native';
 import styled from 'styled-components';
@@ -45,20 +46,35 @@ const SimDetail = ({route}) => {
     const [color, setColor] = useState('black');
     const [size, setSize] = useState(40);
     const [data, setData] = useState(route.params);
+    console.log(data);
+    const navigations = useNavigation();
 
     const ChangeColor = () =>{
         if(color==="red"){
             setColor('black');
             setSize(36);
+            AddFavs();
         }
         else{
             setColor('red');
             setSize(40);
+            AddFavs();
         }
     }
-    
+      const AddFavs = () => {
+        const datas = {
+            url:data.url,
+            title:data.title,
+            name:data.names,
+        }
+        data && navigations.navigate("Favorite",
+        {
+            title:data.title,
+            name:data.name,
+            url:data.url
+        })
+    }
         
-        console.log(route);
     
     return (
         <ScrollView>

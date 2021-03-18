@@ -1,5 +1,5 @@
-import React from 'react';
-import { Dimensions } from 'react-native';
+import React, { useEffect } from 'react';
+import { Dimensions, StyleSheet, TouchableOpacity, View } from 'react-native';
 import styled from 'styled-components/native';
 import { trimText } from './tool';
 
@@ -44,6 +44,14 @@ const Simimages = styled.Image`
     margin: 6px 2px 6px 2px;
 `;
 
+const FavContainer = styled.View`
+`;
+
+const FavText = styled.Text`
+    color:white;
+`;
+
+
 export const Image = ({url}) => {
     return (
         <Images source={{uri:url}}/>
@@ -83,5 +91,15 @@ export const OverView = ({overview,len}) =>{
         </OvText>
     );
 }
+
+export const Favicons = () =>{
+    return(
+        <TouchableOpacity>
+            <FavText>
+                PlusBtn
+            </FavText>
+        </TouchableOpacity>
+    );}
+
 
 export const NoImage = 'https://unsplash.com/photos/0W4XLGITrHg';

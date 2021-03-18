@@ -1,10 +1,6 @@
-import { useNavigation } from '@react-navigation/native';
 import React from 'react';
-import { TouchableOpacity } from 'react-native';
 import styled from 'styled-components';
-import { Simage } from '../../common';
 import {apiImage} from '../../myapi';
-import { trimText } from '../../tool';
 import SearchDatacon from './SearchDatacon';
 
 const Container = styled.View``;
@@ -15,14 +11,10 @@ const Text = styled.Text`
     margin:12px 0px;
     text-align:center;
     `;
-const RContainer = styled.View``;
 
 const FlexContainer = styled.View`
     flex-direction:row;
     flex-wrap:wrap;
-`;
-const TitleText = styled.Text`
-    color:white;
 `;
 
 const SearchData = ({data, datat,keyword,state}) => {
@@ -41,6 +33,7 @@ const SearchData = ({data, datat,keyword,state}) => {
             key={result.id}
             overview={result.overview}
             vote={result.vote_average}
+            poster={result.poster_path}
            />
             )}
            {datat.map(result =><SearchDatacon
@@ -48,10 +41,11 @@ const SearchData = ({data, datat,keyword,state}) => {
             title={result.title}
             result={result} 
             id={result.id}
-            url={apiImage(result.apiImage)}
+            url={apiImage(result.poster_path)}
             key={result.id}
             overview={result.overview}
             vote={result.vote_average}
+            poster={result.poster_path}
            />)}
            </FlexContainer>
            </Container> : <Text>No Results</Text>}

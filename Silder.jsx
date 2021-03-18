@@ -48,7 +48,7 @@ const BText = styled.Text`
     font-size:14px;
 `
 
-const Silder = ({id,overview,result,name,titles,url,vote}) => {
+const Silder = ({id,overview,result,name,titles,url,vote,poster}) => {
     const navigation = useNavigation();
     const goToDetail = () => navigation.navigate("Details",
     {
@@ -58,7 +58,8 @@ const Silder = ({id,overview,result,name,titles,url,vote}) => {
         overview,
         id,
         vote,
-        bg:apiImage(result.backdrop_path)
+        bg:apiImage(result.backdrop_path),
+        poster
     });
     return (
             <View>
